@@ -53,17 +53,20 @@ namespace Cat_as_Service
 
         private void btnFavoritar_Click(object sender, EventArgs e)
         {
-            Breed breed = Array.Find(breeds, b => b.name.Equals(selected));
-            string breedId = breed.id;
-            string error = Service.inst.PostFavorite(imageId, breedId);
+            if(selected != null)
+            {
+                Breed breed = Array.Find(breeds, b => b.name.Equals(selected));
+                string breedId = breed.id;
+                string error = Service.inst.PostFavorite(imageId, breedId);
 
-            if (error != null)
-            {
-                MessageBox.Show(error);
-            }
-            else
-            {
-                MessageBox.Show($"{breed.name} foi favoritado!");
+                if (error != null)
+                {
+                    MessageBox.Show(error);
+                }
+                else
+                {
+                    MessageBox.Show($"{breed.name} foi favoritado!");
+                }
             }
         }
     }
